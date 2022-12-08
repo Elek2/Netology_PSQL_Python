@@ -76,26 +76,26 @@ class ClientDataBase:
 
 if __name__ == '__main__':
 	# Ввести свои данные
-	my_clients = ClientDataBase('xxx', "xxx", "xxx")
-	my_clients.create_db()
-	my_clients.add_client('Женя', 'Субкин', 'Vet@mail.ru')
-	my_clients.add_client('Маша', 'Губкина', 'Mash@mail.ru')
-	my_clients.add_client('Паша', 'Пашин', 'Pash@mail.ru')
-	my_clients.add_client('Вера', 'Комова', 'Ver@yandex.ru')
-	my_clients.change_client(3, name="БРАБОРА", surname='ДАРАБОРА', email="dara@yandex.ru")
-	my_clients.add_number(3333333, 2)
-	my_clients.add_number(2323462346, 4)
-	my_clients.add_number(2345243, 2)
-	my_clients.add_number(984325, 1)
-	my_clients.add_number(98433325, 2)
-	my_clients.add_number(12321535, 3)
-	my_clients.add_number(5453246574, 4)
-	my_clients.add_number(2222222, 1)
-	my_clients.delete_client(2)
-	my_clients.delete_number (2323462346)
-	my_clients.find('5453246574')
+	with ClientDataBase('xxx', "xxx", "xxx") as my_clients:
+		my_clients.create_db()
+		my_clients.add_client('Женя', 'Субкин', 'Vet@mail.ru')
+		my_clients.add_client('Маша', 'Губкина', 'Mash@mail.ru')
+		my_clients.add_client('Паша', 'Пашин', 'Pash@mail.ru')
+		my_clients.add_client('Вера', 'Комова', 'Ver@yandex.ru')
+		my_clients.change_client(3, name="БРАБОРА", surname='ДАРАБОРА', email="dara@yandex.ru")
+		my_clients.add_number(3333333, 2)
+		my_clients.add_number(2323462346, 4)
+		my_clients.add_number(2345243, 2)
+		my_clients.add_number(984325, 1)
+		my_clients.add_number(98433325, 2)
+		my_clients.add_number(12321535, 3)
+		my_clients.add_number(5453246574, 4)
+		my_clients.add_number(2222222, 1)
+		my_clients.delete_client(2)
+		my_clients.delete_number (2323462346)
+		my_clients.find('5453246574')
 
 
 
-	# my_clients.delete_db()
+		# my_clients.delete_db()
 
