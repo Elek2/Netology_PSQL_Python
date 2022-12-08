@@ -1,10 +1,7 @@
 import psycopg2
 
-#
-# with open('bd_pass.txt') as pas_file:
-# 	passw = pas_file.readline()
 
-
+# Создаем класс подключающийся к указанной базе данных
 class ClientDataBase:
 	def __init__(self, dbname, user, password):
 		self.conn = psycopg2.connect(dbname=dbname, user=user, password=password)
@@ -20,7 +17,7 @@ class ClientDataBase:
 			);
 
 		CREATE TABLE IF NOT EXISTS Phone(
-			Number INT Primary key,
+			Number INT8 Primary key,
 			Client_id INT NOT NULL REFERENCES ClientData(id)
 			);
 		""")
@@ -74,36 +71,30 @@ class ClientDataBase:
 		LOWER(cd.email) = LOWER('{c_data}') OR		
 		p.number::VARCHAR = '{c_data}'
 		""")
-		a = self.cur.fetchall()
-		print(a)
+		print(self.cur.fetchall())
+
 
 if __name__ == '__main__':
 	my_clients = ClientDataBase('clients', "postgres", "nicaragua21")
-	my_clients.find('56214433')
-	# my_clients.delete_client(1)
-	# my_clients.delete_number (1111111)
-	# my_clients.change_client(1, name="БРАБОРА", surname='ДАРАБОРА', email="dara@yandex.ru")
-	# my_clients.add_number(2222222, 1)
-	# my_clients.add_client('Петя', 'Дубкин', 'Pet@mail.ru')
-	# my_clients.create_db()
+	my_clients.create_db()
+	my_clients.add_client('Женя', 'Субкин', 'Vet@mail.ru')
+	my_clients.add_client('Маша', 'Губкина', 'Mash@mail.ru')
+	my_clients.add_client('Паша', 'Пашин', 'Pash@mail.ru')
+	my_clients.add_client('Вера', 'Комова', 'Ver@yandex.ru')
+	my_clients.change_client(3, name="БРАБОРА", surname='ДАРАБОРА', email="dara@yandex.ru")
+	my_clients.add_number(3333333, 2)
+	my_clients.add_number(2323462346, 4)
+	my_clients.add_number(2345243, 2)
+	my_clients.add_number(984325, 1)
+	my_clients.add_number(98433325, 2)
+	my_clients.add_number(12321535, 3)
+	my_clients.add_number(5453246574, 4)
+	my_clients.add_number(2222222, 1)
+	my_clients.delete_client(2)
+	my_clients.delete_number (2323462346)
+	my_clients.find('5453246574')
+
+
+
 	# my_clients.delete_db()
 
-#
-
-# str_params = ",".join([k + " " + v for k, v in iter(params.items())])
-# with psycopg2.connect(dbname='clients', user="postgres", password='nicaragua21') as conn:
-# 	with conn.cursor() as cur:
-# 		cur.execute("""
-# 		DROP TABLE ClientData;
-# 		""")
-
-
-	# client_params = {
-	# 'id': "SERIAL Primary key",
-	# 'Name': "VARCHAR(60) NOT NULL",
-	# 'Surname': "VARCHAR(60) NOT NULL",
-	# 'Email': "VARCHAR(60) UNIQUE"}
-	#
-	# phone_params = {
-	# 'Number': "INT Primary key",
-	# 'Client_id': "INT NOT NULL REFERENCES ClientData(id)"}
