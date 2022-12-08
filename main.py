@@ -75,7 +75,8 @@ class ClientDataBase:
 
 
 if __name__ == '__main__':
-	my_clients = ClientDataBase('clients', "postgres", "nicaragua21")
+	# Ввести свои данные
+	my_clients = ClientDataBase('xxx', "xxx", "xxx")
 	my_clients.create_db()
 	my_clients.add_client('Женя', 'Субкин', 'Vet@mail.ru')
 	my_clients.add_client('Маша', 'Губкина', 'Mash@mail.ru')
